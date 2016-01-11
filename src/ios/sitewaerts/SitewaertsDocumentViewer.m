@@ -71,7 +71,7 @@
     if (url != nil && url.length > 0 && contentType != nil && contentType.length > 0 ) {
 
        if([contentType isEqualToString:contentTypePDF]){
-        NSURL* absoluteURL = [[NSURL URLWithString:url relativeToURL:[self.webView.request URL]] absoluteURL];
+        NSURL* absoluteURL = [[NSURL URLWithString:url relativeToURL:[((UIWebView*)self.webView).request URL]] absoluteURL];
         if ([[NSFileManager defaultManager] fileExistsAtPath:absoluteURL.path]) {
             NSLog(@"[pdfviewer] path: %@", absoluteURL.path);
             ReaderDocument *document = [ReaderDocument withDocumentFilePath:absoluteURL.path password:nil];
@@ -105,7 +105,7 @@
     NSString* url = [options objectForKey:@"url"];
     if (url != nil && url.length > 0) {
 
-        NSURL* absoluteURL = [[NSURL URLWithString:url relativeToURL:[self.webView.request URL]] absoluteURL];
+        NSURL* absoluteURL = [[NSURL URLWithString:url relativeToURL:[((UIWebView*)self.webView).request URL]] absoluteURL];
 
         if ([[NSFileManager defaultManager] fileExistsAtPath:absoluteURL.path]) {
             NSLog(@"[pdfviewer] path: %@", absoluteURL.path);
